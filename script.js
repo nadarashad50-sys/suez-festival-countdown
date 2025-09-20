@@ -1,22 +1,23 @@
-// تاريخ المهرجان: 13 أكتوبر 2025
-var eventDate = new Date("Oct 13, 2025 18:00:00").getTime();
+const TARGET_DATE = new Date('2025-09-30T18:00:00'); // عدل التاريخ هنا
 
-var x = setInterval(function() {
-  var now = new Date().getTime();
-  var distance = eventDate - now;
+document.getElementById('event-date').textContent = TARGET_DATE.toLocaleString('ar-EG', {
+  dateStyle: 'full', timeStyle: 'short'
+});
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+function updateCountdown() {
+  const now = new Date();
+  const diff = Math.max(0, TARGET_DATE - now);
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / (60*60*24));
+  const hours = Math.floor((totalSeconds % (60*60*24)) / (60*60));
+  const minutes = Math.floor((totalSeconds % (60*60)) / 60);
+  const seconds = Math.floor(totalSeconds % 60);
 
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = hours;
-  document.getElementById("minutes").innerText = minutes;
-  document.getElementById("seconds").innerText = seconds;
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
 
-  if (distance < 0) {
-    clearInterval(x);
-    document.querySelector(".countdown").innerHTML = "🎊 انطلق المهرجان!";
-  }
-}, 1000);
+updateCountdown();
+setInterval(updateCountdown, 1000);
