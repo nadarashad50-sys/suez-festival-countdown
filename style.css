@@ -3,23 +3,39 @@ body {
   font-family: 'Tahoma', sans-serif;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #2563eb, #1e3a8a);
+  background: linear-gradient(135deg, #38bdf8, #3b82f6, #60a5fa, #93c5fd);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
   color: white;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1600&auto=format&fit=crop') 
-              no-repeat center center/cover;
-  opacity: 0.35;
-  filter: brightness(0.6);
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* عنصر الساعة الرملية */
+.hourglass {
+  width: 40px;
+  height: 70px;
+  position: relative;
+  margin: 1.5rem auto;
+  background: linear-gradient(to bottom, transparent 45%, rgba(255, 255, 255, 0.7) 50%, transparent 55%);
+  clip-path: polygon(50% 0, 100% 20%, 60% 50%, 100% 80%, 50% 100%, 0 80%, 40% 50%, 0 20%);
+  animation: flip 3s infinite linear;
+}
+
+@keyframes flip {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .container {
@@ -99,7 +115,7 @@ h1 {
   gap: 1rem;
 }
 
-/* الأزرار (روابط <a>) */
+/* الأزرار */
 .cta a {
   display: inline-block;
   padding: 0.9rem 1.6rem;
