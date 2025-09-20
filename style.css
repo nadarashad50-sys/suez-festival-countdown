@@ -16,7 +16,8 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photos/a-fisherman-works-on-his-boat-at-sea-p1C7MZECZSA?q=80&w=1600&auto=format&fit=crop') no-repeat center center/cover;
+  background: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1600&auto=format&fit=crop') 
+              no-repeat center center/cover;
   opacity: 0.35;
   filter: brightness(0.6);
 }
@@ -29,9 +30,11 @@ body::before {
   border-radius: 20px;
   padding: 2rem;
   max-width: 800px;
-  width: 90%;
+  width: 100%;
+  box-sizing: border-box;
   backdrop-filter: blur(8px);
   box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  margin: 1rem;
 }
 
 h1 {
@@ -40,13 +43,14 @@ h1 {
 }
 
 .subtitle {
-  font-size: 0.9rem;
-  opacity: 0.85;
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
 .event-date {
   margin-top: 1rem;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .countdown-card {
@@ -89,17 +93,17 @@ h1 {
 }
 
 .cta {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 /* الأزرار (روابط <a>) */
 .cta a {
   display: inline-block;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
+  padding: 0.9rem 1.6rem;
+  border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
@@ -117,7 +121,7 @@ h1 {
   backdrop-filter: blur(6px);
 }
 .cta .details:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
@@ -132,9 +136,46 @@ h1 {
   transform: translateY(-2px);
 }
 
-@media (min-width: 600px) {
+/* موبايل */
+@media (max-width: 600px) {
+  .container {
+    padding: 1.2rem;
+    border-radius: 15px;
+    margin: 0.8rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .countdown-title {
+    font-size: 1rem;
+  }
+
+  .time-value {
+    font-size: 1.3rem;
+  }
+
+  .time-label {
+    font-size: 0.75rem;
+  }
+
+  .time-boxes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
   .cta {
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .cta a {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
   }
 }
